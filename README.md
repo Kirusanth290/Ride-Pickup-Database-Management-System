@@ -1,14 +1,12 @@
-🚗 Ride & Pickup DBMS — Oracle SQL + Unix Shell Automation
+🛺 Ride & Pickup DBMS — Oracle SQL + Unix Shell Automation
 
 This project implements a complete Ride & Pickup Database Management System using Oracle SQL, fully automated with Unix Shell scripting.
-It provides end-to-end control over the database lifecycle — including schema creation, table population, teardown, and analytical queries — all executed through modular .sh scripts.
+It demonstrates end-to-end database lifecycle management — including table creation, population, teardown, and advanced analytics — all driven by executable .sh scripts.
 
-The repository includes a unified SQL file along with shell automation scripts, structured to support future development into mobile, desktop, or full web-based applications using the same backend.
+This repo also includes a unified SQL file and modular shell scripts, and is structured for future expansion into a Java, Python, or full web-based interface using the same backend DBMS.
 
 ✅ Key Features
 🗄️ Full Relational Database Schema
-
-The system models core ride-sharing and delivery entities:
 
 Customers
 
@@ -26,63 +24,53 @@ Payments
 
 Customer ↔ Driver Ratings
 
-Designed using normalized principles with:
-
-Primary & Foreign Keys
-
-CHECK constraints
-
-Relationship integrity
-
-Real-world business rules (vehicle linkage, order assignment, payment flows)
+Normalized design with PKs, FKs, CHECK constraints, and referential integrity.
 
 🔁 Automated DB Lifecycle (Unix Shell Scripts)
 
-Each system operation is executed through dedicated shell scripts:
+Each operation is executed through dedicated .sh scripts:
 
 Script	Purpose
-drop_tables.sh	Safely removes all tables in correct dependency order
+drop_tables.sh	Safely removes all tables in dependency order
 create_tables.sh	Builds the full relational schema
-populate_tables.sh	Inserts sample data and initializes entity relationships
-query_tables.sh	Runs analytics, joins, summaries, and advanced SQL queries
-menu.sh	Interactive terminal menu to operate the DBMS
+populate_tables.sh	Inserts sample data + initializes core relationships
+query_tables.sh	Runs analytics, summaries, joins, and advanced SQL
+menu.sh	Interactive terminal menu to run the entire system
 📊 Advanced SQL Queries Included
 
-The system includes a variety of analytical and operational SQL queries:
+Aggregation & HAVING
 
-Aggregations & HAVING
-
-JOIN-based reporting
+JOIN-based analytics
 
 EXISTS subqueries
 
 MINUS & UNION
 
-Ride fare analysis
+Ride revenue analysis
 
-Driver and merchant activity summaries
+Driver performance summaries
 
-Customer/driver rating analytics
+Merchant delivery reports
+
+Customer/driver rating insights
 
 🏗️ Future Extensions
 
-The DBMS is designed for easy expansion into:
+The system is designed to be easily extended into:
 
-Java Application (JDBC)
+Java Application (JDBC interface)
 
 Python Backend (Flask / FastAPI + cx_Oracle)
 
-Web App (React / Node.js / Spring Boot)
+Web App (React/Node/Spring Boot)
 
-Mobile App (Android/iOS with API integration)
-
-A clean, modular backend foundation ready for full-stack implementation.
+A clean DBMS foundation ready for full-stack use.
 
 ✅ How to Use
 1. Make scripts executable
 chmod +x *.sh
 
-2. Launch the interactive menu
+2. Run the interactive menu
 bash menu.sh
 
 3. Run operations manually
@@ -91,9 +79,8 @@ bash create_tables.sh
 bash populate_tables.sh
 bash query_tables.sh
 
-4. Update Oracle login credentials
 
-Inside each script, replace the placeholder:
+You must update the Oracle login string in each script:
 
 YOUR_USERNAME/YOUR_PASSWORD@oracle.scs.ryerson.ca:1521/orcl
 
@@ -106,7 +93,7 @@ YOUR_USERNAME/YOUR_PASSWORD@oracle.scs.ryerson.ca:1521/orcl
 /ride_pickup.sql
 /README.md
 
-👨‍💻 Author
+✅ Author
 
 Kirusanth Palakanthan
 Toronto Metropolitan University — Computer Engineering
