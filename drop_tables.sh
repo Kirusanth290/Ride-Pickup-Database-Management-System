@@ -1,0 +1,21 @@
+#!/bin/sh
+echo -n "Enter Oracle password: "
+read -s PASSWORD
+echo
+sqlplus64 "cs_username/$PASSWORD@(DESCRIPTION=
+(ADDRESS=(PROTOCOL=TCP)(Host=oracle.scs.ryerson.ca)(Port=1521))
+(CONNECT_DATA=(SID=orcl)))" <<EOF
+
+-- Drop all tables in reverse dependency order
+DROP TABLE Rating_System CASCADE CONSTRAINTS;
+DROP TABLE Payment CASCADE CONSTRAINTS;
+DROP TABLE Service_Order CASCADE CONSTRAINTS;
+DROP TABLE Vehicle CASCADE CONSTRAINTS;
+DROP TABLE Driver CASCADE CONSTRAINTS;
+DROP TABLE Customer CASCADE CONSTRAINTS;
+DROP TABLE Merchant CASCADE CONSTRAINTS;
+DROP TABLE Location CASCADE CONSTRAINTS;
+DROP TABLE Address CASCADE CONSTRAINTS;
+
+EXIT;
+EOF
