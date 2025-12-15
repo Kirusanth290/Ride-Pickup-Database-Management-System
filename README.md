@@ -1,91 +1,206 @@
-# 🛺 Ride & Pickup DBMS — Oracle SQL + Unix Shell Automation
+🛺 Ride & Pickup Database Management System (DBMS)
 
-This project implements a complete **Ride & Pickup Database Management System** using **Oracle SQL**, fully automated with **Unix Shell scripting**.  
-It demonstrates end-to-end database lifecycle management — including table creation, population, teardown, and advanced analytics — all driven by executable `.sh` scripts.
+Oracle SQL • Unix Shell Automation • Web-Based DBMS
 
-This repo also includes a unified SQL file and modular shell scripts, and is structured for future expansion into a **Java**, **Python**, or **full web-based interface** using the same backend DBMS.
+This repository contains a complete Ride & Pickup Database Management System implemented using Oracle SQL and Unix Shell scripting, with an additional web-based interface built using PHP and HTML. The system models a real-world ride-sharing and delivery platform (similar to Uber/Uber Eats) and demonstrates the full database lifecycle — from conceptual design and normalization to automation, analytics, and web integration.
 
----
+The project integrates ride services and item pickup/delivery into a single, normalized relational database and supports both a menu-driven command-line interface and a browser-based UI, showcasing real-world DBMS usage across multiple access layers.
 
-## ✅ Key Features
+📌 Project Overview
 
-### **🗄️ Full Relational Database Schema**
-- Customers  
-- Drivers  
-- Vehicles  
-- Service Orders (Rides & Deliveries)  
-- Merchants  
-- Pickup & Drop-off Locations  
-- Payments  
-- Customer ↔ Driver Ratings  
-- Normalized design with PKs, FKs, CHECK constraints, and referential integrity.
+The Ride & Pickup DBMS was designed and implemented following industry-standard database engineering practices:
 
-### **🔁 Automated DB Lifecycle (Unix Shell Scripts)**
-Each operation is executed through dedicated `.sh` scripts:
+Application scoping and requirements analysis
 
-| Script | Purpose |
-|--------|---------|
-| `drop_tables.sh` | Safely removes all tables in dependency order |
-| `create_tables.sh` | Builds the full relational schema |
-| `populate_tables.sh` | Inserts sample data + initializes core relationships |
-| `query_tables.sh` | Runs analytics, summaries, joins, and advanced SQL |
-| `menu.sh` | Interactive terminal menu to run the entire system |
+ER modeling and relationship design
 
-### **📊 Advanced SQL Queries Included**
-- Aggregation & HAVING  
-- JOIN-based analytics  
-- EXISTS subqueries  
-- MINUS & UNION  
-- Ride revenue analysis  
-- Driver performance summaries  
-- Merchant delivery reports  
-- Customer/driver rating insights  
+Relational schema creation in Oracle
 
-### **🏗️ Future Extensions**
-The system is designed to be easily extended into:
-- **Java Application** (JDBC interface)  
-- **Python Backend** (Flask / FastAPI + cx_Oracle)  
-- **Web App** (React/Node/Spring Boot)  
+Normalization to 3NF and BCNF
 
-A clean DBMS foundation ready for full-stack use.
+Referential integrity with PK/FK constraints
 
----
+Advanced SQL queries, views, and analytics
 
-## ✅ How to Use
+Unix shell automation with interactive menus
 
-### **1. Make scripts executable**
+Web-based access using PHP and HTML
+
+The database manages core entities such as customers, drivers, vehicles, merchants, service orders, locations, payments, and ratings, ensuring data consistency, integrity, and scalability.
+
+✅ Key Features
+🗄️ Full Relational Database Schema
+
+The system includes the following fully normalized tables:
+
+Customer – user profiles, contact information, balances
+
+Driver – licensing, insurance, and driver details
+
+Vehicle – registered vehicles per driver
+
+Service_Order – ride and delivery transactions
+
+Location – pickup and drop-off addresses
+
+Merchant – stores and restaurants for deliveries
+
+Payment – payment method, amount, and status
+
+Rating_System – two-way customer ↔ driver feedback
+
+Address – reusable address abstraction
+
+All tables are implemented with:
+
+Primary Keys (PK)
+
+Foreign Keys (FK)
+
+CHECK constraints
+
+UNIQUE constraints
+
+ON DELETE CASCADE where appropriate
+
+🔁 Automated Database Lifecycle (Unix Shell)
+
+All database operations are fully automated using executable Unix shell scripts:
+
+Script	Description
+drop_tables.sh	Drops all tables safely in dependency order
+create_tables.sh	Creates the full Oracle schema with constraints
+populate_tables.sh	Inserts sample data and initializes relationships
+query_tables.sh	Executes advanced SQL queries and analytics
+menu.sh	Interactive terminal menu to run the entire system
+
+The menu-driven interface allows users to manage the database without manually entering SQL commands, closely mirroring production-style database automation.
+
+📊 Advanced SQL Queries & Views
+
+The project includes a comprehensive set of SQL queries demonstrating real-world analytics and reporting:
+
+Multi-table JOIN queries
+
+Aggregation using GROUP BY and HAVING
+
+Subqueries with EXISTS
+
+Set operations (UNION, MINUS)
+
+Revenue analysis per driver and merchant
+
+Customer order history
+
+Driver performance summaries
+
+Rating and feedback insights
+
+Custom SQL views were created to simplify recurring access patterns, including:
+
+Active customer orders
+
+Driver earnings summaries
+
+📐 Normalization & Data Integrity
+
+All relations were verified to satisfy Third Normal Form (3NF)
+
+Further validated against Boyce–Codd Normal Form (BCNF)
+
+Functional Dependencies (FDs) were documented and analyzed
+
+No partial or transitive dependencies exist
+
+This design ensures:
+
+Minimal redundancy
+
+Elimination of update anomalies
+
+Strong data integrity and consistency
+
+🏗️ System Architecture
+Oracle Database (Normalized Schema)
+        ↑
+     SQL Scripts
+        ↑
+Unix Shell Automation
+        ↑
+ Interactive Menu (menu.sh)
+        ↑
+   Web Interface (PHP / HTML)
+
+
+The architecture cleanly separates:
+
+Database logic (SQL / PL/SQL)
+
+Automation layer (Unix Shell)
+
+User interaction layers (CLI menu and Web UI)
+
+🌐 Web-Based Application (Implemented)
+
+In addition to command-line automation, the DBMS was extended into a fully functional web-based application.
+
+🧰 Technologies Used
+
+PHP – server-side logic and Oracle connectivity
+
+HTML / CSS – user interface and layout
+
+Oracle Database – backend relational DBMS
+
+SQL / PL/SQL – queries, views, joins, and constraints
+
+Oracle SQL Developer – schema design, testing, and debugging
+
+🌍 Web Interface Capabilities
+
+The web application allows users to:
+
+Create and drop all Ride & Pickup DBMS tables
+
+Populate the database with sample data
+
+Run advanced SQL queries and views
+
+View Customers, Drivers, Vehicles, Merchants, Service Orders, Payments, and Ratings
+
+Perform search, update, and delete operations through form-based inputs
+
+This demonstrates how a single Oracle backend can support both automation scripts and a web-based frontend, reflecting real-world full-stack database systems.
+
+🔗 Live Demo (TMU VPN required):
+https://webdev.scs.ryerson.ca/~kpalakan/assignment9.php
+
+🚀 How to Run the Project
+1️⃣ Make scripts executable
 chmod +x *.sh
 
-### **2. Run the interactive menu**
-bash menu.sh
-
-### **3. Run operations manually**
-bash drop_tables.sh  
-bash create_tables.sh  
-bash populate_tables.sh  
-bash query_tables.sh
-
-You must update the Oracle login string in each script:
+2️⃣ Update Oracle credentials
 YOUR_USERNAME/YOUR_PASSWORD@oracle.scs.ryerson.ca:1521/orcl
 
----
+3️⃣ Launch the interactive menu
+bash menu.sh
 
-## ✅ Repository Structure
-/menu.sh  
-/drop_tables.sh  
-/create_tables.sh  
-/populate_tables.sh  
-/query_tables.sh  
-/ride_pickup.sql  
+4️⃣ Run scripts manually (optional)
+bash drop_tables.sh
+bash create_tables.sh
+bash populate_tables.sh
+bash query_tables.sh
+
+📁 Repository Structure
+/menu.sh
+/drop_tables.sh
+/create_tables.sh
+/populate_tables.sh
+/query_tables.sh
+/ride_pickup.sql
 /README.md
 
----
+👨‍💻 Author
 
-## ✅ Author  
-**Kirusanth Palakanthan**  
-Toronto Metropolitan University — Computer Engineering
-
----
-
-
-
+Kirusanth Palakanthan
+Computer Engineering
